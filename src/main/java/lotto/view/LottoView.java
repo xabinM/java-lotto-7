@@ -2,10 +2,11 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static lotto.exception.Exception.FAIL_PARSE_INT;
+
 public class LottoView {
     private static final String REQUEST_PURCHASE_PRICE = "구입금액을 입력해 주세요.";
-    private static final String ERROR_PARSE_INT = "[ERROR] 정수만 입력해 주세요.";
-
+    private static final String PRINT_PURCHASE_RESULT = "개를 구매했습니다.";
 
     public int requestPurchasePrice() {
         System.out.println(REQUEST_PURCHASE_PRICE);
@@ -16,8 +17,9 @@ public class LottoView {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ERROR_PARSE_INT);
+            throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
         }
     }
+
 
 }

@@ -1,12 +1,14 @@
 package lotto.model.validator;
 
+
+import static lotto.exception.Exception.INDIVISIBLE_PRICE;
+
 public class Validator {
-    private static final int PRICE_UNIT = 1000;
-    private static final String ERROR_INDIVISIBLE_PRICE = "[ERROR] 로또 구입 금액은 1000원 단위만 가능합니다.";
+    private static final int LOTTO_PRICE = 1000;
 
     public static void validateDivisibility(int price) {
-        if (price % PRICE_UNIT != 0) {
-            throw new IllegalArgumentException(ERROR_INDIVISIBLE_PRICE);
+        if (price % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(INDIVISIBLE_PRICE.getMessage());
         }
     }
 }

@@ -67,4 +67,22 @@ public class LottoView {
             throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
         }
     }
+
+    public int requestBonusNumber(List<Integer> winningNumbers) {
+        System.out.println(REQUEST_BONUS_NUMBER);
+        int number = inputBonusNumber();
+        BonusValidator.validateBonusNumber(number, winningNumbers);
+
+        return number;
+    }
+
+    private int inputBonusNumber() {
+        try {
+            String input = Console.readLine();
+
+            return Integer.parseInt(input.trim());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
+        }
+    }
 }

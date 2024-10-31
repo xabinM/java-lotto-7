@@ -1,7 +1,6 @@
 package lotto.model.validator;
 
 import lotto.exception.Exception;
-
 import java.util.List;
 
 public class NumberRangeValidator {

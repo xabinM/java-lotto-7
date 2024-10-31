@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class WinningNumbersValidator extends NumberRangeValidator {
-    public static void validateWinningNumbers (List<Integer> numbers) {
+    public static void validateWinningNumbers(List<Integer> numbers) {
         validateWinningNumbersSize(numbers);
         validateNumberRange(numbers);
         validateWinningNumberDuplication(numbers);

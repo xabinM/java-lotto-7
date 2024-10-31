@@ -1,6 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
+
+import java.util.List;
 
 import static lotto.exception.Exception.FAIL_PARSE_INT;
 
@@ -21,5 +24,10 @@ public class LottoView {
         }
     }
 
-
+    public void printLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + PRINT_PURCHASE_RESULT);
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
 }

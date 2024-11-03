@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto;
 
 import lotto.exception.Exception;
 

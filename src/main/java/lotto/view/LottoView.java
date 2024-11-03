@@ -111,8 +111,7 @@ public class LottoView {
     }
 
     private static void printRateReturn(LottoAmount lottoAmount, RankStorage rankStorage) {
-        System.out.println("총 수익률은 " +
-                StatisticsCalculator.calculateRateReturn(lottoAmount, rankStorage) +
-                "%입니다.");
+        System.out.printf("총 수익률은 %.1f%%입니다.\n",
+                StatisticsCalculator.calculateRateReturn(lottoAmount, rankStorage));
     }
 }

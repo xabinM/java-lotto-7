@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +73,14 @@ public class StatisticsCalculator {
             totalReturn += rankMessage.getPrize() * rankStorage.getRankCount(rankMessage.getRank());
         }
 
-        return (double) totalReturn / lottoAmount.getAmount() * 100;
+        double rate = (double) totalReturn / lottoAmount.getAmount() * 100;
+
+        return roundOff(rate);
+    }
+
+    private static double roundOff(double number) {
+        BigDecimal roundedNumber = new BigDecimal(number).setScale(1, RoundingMode.HALF_UP);
+
+        return roundedNumber.doubleValue();
     }
 }

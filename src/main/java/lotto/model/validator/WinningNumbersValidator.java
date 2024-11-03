@@ -16,7 +16,7 @@ public class WinningNumbersValidator extends NumberRangeValidator {
     private static void validateWinningNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(
-                    Exception.IVALID_LOTTO_NUMBERS_SIZE.getMessage()
+                    Exception.INVALID_LOTTO_NUMBERS_SIZE.getMessage()
             );
         }
     }

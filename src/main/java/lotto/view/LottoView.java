@@ -27,8 +27,10 @@ public class LottoView {
 
     private static int inputPrice() {
         try {
+            String input = Console.readLine();
+            System.out.println();
 
-            return Integer.parseInt(Console.readLine());
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
         }
@@ -40,6 +42,7 @@ public class LottoView {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+        System.out.println();
     }
 
     public static List<Integer> requestWinningNumbers() {
@@ -52,7 +55,7 @@ public class LottoView {
 
     private static List<Integer> inputWinningNumbers() {
         String input = Console.readLine();
-
+        System.out.println();
         return parseToInteger(input.split(DELIMITER_WINNING_NUMBERS));
     }
 
@@ -81,6 +84,7 @@ public class LottoView {
     private static int inputBonusNumber() {
         try {
             String input = Console.readLine();
+            System.out.println();
 
             return Integer.parseInt(input.trim());
         } catch (NumberFormatException e) {

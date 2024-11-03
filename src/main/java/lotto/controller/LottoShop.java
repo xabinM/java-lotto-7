@@ -12,17 +12,17 @@ public class LottoShop {
     }
 
     public void runLotto() {
-        int amount = processPurchaseAmount();
-        List<Lotto> lottos = processBuyLotto(amount);
+        LottoAmount amount = processPurchaseAmount();
+        List<Lotto> lottos = processBuyLotto(amount.getAmount());
         WinningLotto winningLotto = processWinningLotto();
-        processWinningStatistics(lottos, winningLotto);
+        processWinningStatistics(amount, lottos, winningLotto);
     }
 
-    private int processPurchaseAmount() {
+    private LottoAmount processPurchaseAmount() {
         while (true) {
             try {
 
-                return new LottoAmount(LottoView.requestPurchasePrice()).getAmount();
+                return new LottoAmount(LottoView.requestPurchasePrice());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -65,12 +65,12 @@ public class LottoShop {
         }
     }
 
-    public void processWinningStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+    public void processWinningStatistics(LottoAmount lottoAmount, List<Lotto> lottos, WinningLotto winningLotto) {
         List<LottoResult> lottoResults = StatisticsCalculator.checkLotto(lottos, winningLotto);
 
         RankStorage rankStorage = new RankStorage();
         StatisticsCalculator.calculateRankCounts(lottoResults, rankStorage);
 
-        LottoView.printWinningStatistics(rankStorage);
+        LottoView.printWinningStatistics(lottoAmount, rankStorage);
     }
 }

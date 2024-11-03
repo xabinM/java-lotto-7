@@ -64,4 +64,13 @@ public class StatisticsCalculator {
         }
         return 0;
     }
+
+    public static double calculateRateReturn(LottoAmount lottoAmount, RankStorage rankStorage) {
+        int totalReturn = 0;
+        for (RankMessage rankMessage : RankMessage.values()) {
+            totalReturn += rankMessage.getPrize() * rankStorage.getRankCount(rankMessage.getRank());
+        }
+
+        return (double) totalReturn / lottoAmount.getAmount() * 100;
+    }
 }

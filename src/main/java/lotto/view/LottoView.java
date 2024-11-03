@@ -1,9 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.model.Lotto;
-import lotto.model.RankMessage;
-import lotto.model.RankStorage;
+import lotto.model.*;
 import lotto.model.validator.BonusValidator;
 import lotto.model.validator.WinningNumbersValidator;
 
@@ -90,11 +88,12 @@ public class LottoView {
         }
     }
 
-    public static void printWinningStatistics(RankStorage rankStorage) {
+    public static void printWinningStatistics(LottoAmount lottoAmount, RankStorage rankStorage) {
         System.out.println(PRINT_WINNING_STATISTICS);
         System.out.println(PRINT_SECTION_SEPARATOR);
 
         printStatisticsDetails(rankStorage);
+        printRateReturn(lottoAmount, rankStorage);
     }
 
     private static void printStatisticsDetails(RankStorage rankStorage) {
@@ -105,5 +104,11 @@ public class LottoView {
 
             System.out.println(winningMessage + " - " + count + "개");
         }
+    }
+
+    private static void printRateReturn(LottoAmount lottoAmount, RankStorage rankStorage) {
+        System.out.println("총 수익률은 " +
+                StatisticsCalculator.calculateRateReturn(lottoAmount, rankStorage) +
+                "%입니다.");
     }
 }

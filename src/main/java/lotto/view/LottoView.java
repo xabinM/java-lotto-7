@@ -18,6 +18,7 @@ public class LottoView {
     private static final String DELIMITER_WINNING_NUMBERS = ",";
     private static final String PRINT_WINNING_STATISTICS = "당첨 통계";
     private static final String PRINT_SECTION_SEPARATOR = "---";
+    private static final String PRINT_TOTAL_RATE_RETURN = "총 수익률은 %.1f%%입니다.\n";
 
     public static int requestPurchasePrice() {
         System.out.println(REQUEST_PURCHASE_PRICE);
@@ -111,7 +112,7 @@ public class LottoView {
     }
 
     private static void printRateReturn(LottoAmount lottoAmount, RankStorage rankStorage) {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n",
+        System.out.printf(PRINT_TOTAL_RATE_RETURN,
                 StatisticsCalculator.calculateRateReturn(lottoAmount, rankStorage));
     }
 }

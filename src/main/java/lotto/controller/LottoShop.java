@@ -1,33 +1,28 @@
 package lotto.controller;
 
-import lotto.model.Lotto;
-import lotto.model.LottoAmount;
-import lotto.model.LottoMachine;
-import lotto.model.WinningLotto;
+import lotto.model.*;
 import lotto.view.LottoView;
-
 import java.util.List;
 
 public class LottoShop {
-    private final LottoView lottoView;
     private final LottoMachine lottoMachine;
 
-    public LottoShop(LottoView lottoView, LottoMachine lottoMachine) {
+    public LottoShop(LottoMachine lottoMachine) {
         this.lottoMachine = lottoMachine;
-        this.lottoView = new LottoView();
     }
 
     public void runLotto() {
         int amount = processPurchaseAmount();
         List<Lotto> lottos = processBuyLotto(amount);
         WinningLotto winningLotto = processWinningLotto();
+        processWinningStatistics(lottos, winningLotto);
     }
 
     private int processPurchaseAmount() {
         while (true) {
             try {
 
-                return new LottoAmount(lottoView.requestPurchasePrice()).getAmount();
+                return new LottoAmount(LottoView.requestPurchasePrice()).getAmount();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -36,7 +31,7 @@ public class LottoShop {
 
     private List<Lotto> processBuyLotto(int amount) {
         List<Lotto> lottos = lottoMachine.buyLottos(amount);
-        lottoView.printLottos(lottos);
+        LottoView.printLottos(lottos);
 
         return lottos;
     }
@@ -52,7 +47,7 @@ public class LottoShop {
         while (true) {
             try {
 
-                return lottoView.requestWinningNumbers();
+                return LottoView.requestWinningNumbers();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -63,10 +58,19 @@ public class LottoShop {
         while (true) {
             try {
 
-                return lottoView.requestBonusNumber(winningNumbers);
+                return LottoView.requestBonusNumber(winningNumbers);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void processWinningStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        List<LottoResult> lottoResults = StatisticsCalculator.checkLotto(lottos, winningLotto);
+
+        RankStorage rankStorage = new RankStorage();
+        StatisticsCalculator.calculateRankCounts(lottoResults, rankStorage);
+
+        LottoView.printWinningStatistics(rankStorage);
     }
 }

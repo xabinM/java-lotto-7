@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.model.enums;
 
 public enum RankMessage {
     FIFTH(5, "3개 일치 (5,000원 )", 5000),

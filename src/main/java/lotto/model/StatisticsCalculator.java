@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.model.enums.RankMessage;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;

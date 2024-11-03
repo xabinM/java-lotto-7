@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.*;
+import lotto.model.enums.RankMessage;
 import lotto.model.validator.BonusValidator;
 import lotto.model.validator.WinningNumbersValidator;
 

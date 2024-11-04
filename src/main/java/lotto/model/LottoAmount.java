@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.exception.Exception.INDIVISIBLE_PRICE;
+import static lotto.exception.Exception.ONLY_DIVISIBLE_BY_THOUSAND;
 
 public class LottoAmount {
     private static final int LOTTO_PRICE = 1000;
@@ -18,7 +18,7 @@ public class LottoAmount {
 
     private void validateDivisibility(int amount) {
         if (amount % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(INDIVISIBLE_PRICE.getMessage());
+            throw new IllegalArgumentException(ONLY_DIVISIBLE_BY_THOUSAND.getMessage());
         }
     }
 }

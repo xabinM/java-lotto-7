@@ -10,7 +10,7 @@ import lotto.model.validator.WinningNumbersValidator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.exception.Exception.FAIL_PARSE_INT;
+import static lotto.exception.Exception.*;
 
 public class LottoView {
     private static final String REQUEST_PURCHASE_PRICE = "구입금액을 입력해 주세요.";
@@ -35,7 +35,7 @@ public class LottoView {
 
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
+            throw new IllegalArgumentException(ONLY_NUMERIC_INPUT_FOR_MONEY.getMessage());
         }
     }
 
@@ -72,7 +72,7 @@ public class LottoView {
 
             return winningNumbers;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
+            throw new IllegalArgumentException(INVALID_WINNING_NUMBERS_INPUT_TYPE_AND_DELIMITER.getMessage());
         }
     }
 
@@ -91,7 +91,7 @@ public class LottoView {
 
             return Integer.parseInt(input.trim());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(FAIL_PARSE_INT.getMessage());
+            throw new IllegalArgumentException(ONLY_NUMERIC_INPUT_FOR_MONEY.getMessage());
         }
     }
 

@@ -12,7 +12,7 @@ class BonusValidatorTest {
 
     @Test
     @DisplayName("보너스 번호 유효성 검사 - 중복된 번호")
-    void validateBonusNumber_Duplicate() {
+    void validateBonusNumberDuplicate() {
         var winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int duplicateBonusNumber = 1;
 
@@ -25,7 +25,7 @@ class BonusValidatorTest {
 
     @Test
     @DisplayName("보너스 번호 유효성 검사 - 정상 케이스")
-    void validateBonusNumber_Valid() {
+    void validateBonusNumberValid() {
         var winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int validBonusNumber = 7;
 
@@ -36,7 +36,7 @@ class BonusValidatorTest {
 
     @Test
     @DisplayName("보너스 번호 범위 유효성 검사")
-    void validateBonusNumber_Range() {
+    void validateBonusNumberRange() {
         var winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int outOfRangeBonusNumber = 46;
 

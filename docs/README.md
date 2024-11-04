@@ -14,7 +14,7 @@
 - [x] 사용자가 입력한 구입 금액에 맞는 로또 발행 수량을 결정한다.
 ### 로또 발행
 - [x] 발행한 로또 번호를 출력 시에 오름차순으로 정렬한다.
-- [x] 로또 수량과 각 또로 번호 목록을 출력한다.
+- [x] 로또 수량과 각 로또 번호 목록을 출력한다.
 ### 당첨 번호 입력
 - [x] 당첨 번호 추첨 시 보너스 1개를 추가로 뽑는다.
 ### 당첨 통계 출력 - 당첨 내역 생성
@@ -54,3 +54,59 @@
 - [x] 보너스 번호가 당첨 번호와 중복되는 경우
 
 ---
+
+## 객체 도출
+
+핵심 기능으로부터 객체를 도출한다.
+
+- 로또를 구입한다.
+    - LottoView
+    - LottoMachine
+    - LottoShop
+- 로또 수량에 맞게 로또 번호를 발행한다.
+    - Lotto
+    - LottoGenerator
+    - LottoAmount
+    - LottoShop
+- 발행된 로또 번호를 출력한다.
+    - LottoView
+    - Lotto
+- 당첨 번호를 입력한다.
+    - LottoView
+    - WinningLotto
+- 당첨 통계를 출력한다.
+    - 당첨 내역을 생성한다.
+        - LottoResult
+        - RankStorage
+        - StatisticsCalculator
+        - LottoView
+    - 수익률을 출력한다.
+        - LottoAmount
+        - RankStorage
+        - StatisticsCalculator
+        - LottoView
+
+## 추가 객체 도출
+
+- 사용자가 입력한 구입 금액에 맞는 로또 발행 수량을 결정한다.
+    - LottoMachine
+- 발행한 로또 번호를 출력 시에 오름차순으로 정렬한다.
+    - Lotto
+    - LottoNumberGenerator
+    - LottoView
+- 당첨 번호 추첨 시 보너스 1개를 추가로 뽑는다.
+    - WinningLotto
+- 당첨 번호와 로또 번호를 비교하여 당첨 내역을 출력한다.
+    - StatisticsCalculator
+    - LottoView
+- 당첨은 1등부터 5등까지 있다.
+    - RankMessage (enum)
+        - 당첨 번호 6개가 로또 번호와 일치할 시 1등이다.
+        - 당첨 번호 중 5개와 보너스 번호가 로또 번호와 일치할 시 2등이다.
+        - 당첨 번호 중 5개가 로또 번호와 일치할 시 3등이다.
+        - 당첨 번호 중 4개가 로또 번호와 일치할 시 4등이다.
+        - 당첨 번호 중 3개가 로또 번호와 일치할 시 5등이다.
+- 당첨 내역과 구입 금액을 비교하여 수익률을 계산한다.
+    - StatisticsCalculator
+        - 수익률은 당첨 금액을 구입 금액으로 나눈 후 100을 곱합 값이다.
+        - 수익률은 소수점 둘째 자리에서 반올림한다.

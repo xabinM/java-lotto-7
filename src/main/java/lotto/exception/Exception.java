@@ -2,7 +2,7 @@ package lotto.exception;
 
 public enum Exception {
     // 구입 금액
-    ONLY_NUMERIC_INPUT_FOR_MONEY("숫자만 입력 가능합니다"),
+    ONLY_NUMERIC_INPUT_FOR_MONEY("1000이상의 숫자만 입력 가능합니다"),
     ONLY_DIVISIBLE_BY_THOUSAND("로또 구입 금액은 1000원 단위만 가능합니다."),
     //번호 공통 사항
     INVALID_NUMBER_RANGE("1이상 45이하의 숫자만 입력 가능합니다."),

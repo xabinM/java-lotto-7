@@ -17,7 +17,7 @@ public class LottoAmount {
     }
 
     private void validateDivisibility(int amount) {
-        if (amount % LOTTO_PRICE != 0) {
+        if (amount == 0 || amount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ONLY_DIVISIBLE_BY_THOUSAND.getMessage());
         }
     }

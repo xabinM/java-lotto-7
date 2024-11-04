@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class WinningNumbersValidator extends NumberRangeValidator {
-    public static void validateWinningNumbers(List<Integer> numbers) {
-        validateWinningNumbersSize(numbers);
+public class LottoValidator extends NumberRangeValidator {
+    public static void validateLotto(List<Integer> numbers) {
+        validateNumbersSize(numbers);
         validateNumberRange(numbers);
-        validateWinningNumberDuplication(numbers);
+        validateNumberDuplication(numbers);
     }
 
-    private static void validateWinningNumbersSize(List<Integer> numbers) {
+    private static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(
                     Exception.INVALID_LOTTO_NUMBERS_SIZE.getMessage()
@@ -21,7 +21,7 @@ public class WinningNumbersValidator extends NumberRangeValidator {
         }
     }
 
-    private static void validateWinningNumberDuplication(List<Integer> numbers) {
+    private static void validateNumberDuplication(List<Integer> numbers) {
         Set<Integer> duplicationCheck = new HashSet<>(numbers);
 
         if (duplicationCheck.size() != numbers.size()) {

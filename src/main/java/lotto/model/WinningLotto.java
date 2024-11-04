@@ -1,7 +1,5 @@
 package lotto.model;
 
-import lotto.exception.Exception;
-
 import java.util.List;
 
 public class WinningLotto {

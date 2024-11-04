@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.exception.Exception;
+import lotto.model.validator.LottoValidator;
 
 import java.util.List;
 
@@ -8,14 +8,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        LottoValidator.validateLotto(numbers);
         this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Exception.INVALID_LOTTO_NUMBERS_SIZE.getMessage());
-        }
     }
 
     public List<Integer> getNumbers() {
